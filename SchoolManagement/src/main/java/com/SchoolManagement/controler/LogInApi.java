@@ -28,14 +28,12 @@ public class LogInApi {
   }
 
   @RequestMapping("/studentLogin")
-  public ParentMaster studentLoginApi(@RequestParam(name = "username", required = true) String username,
-      @RequestParam(name = "pass", required = true) String pass) {
-	  return parentDao.findByUserNameAndPassword(username, pass);
+  public ParentMaster studentLoginApi(@RequestBody LoginDto login) {
+	  return parentDao.findByUserNameAndPassword(login.getUserName(), login.getPass());
   }
 
   @RequestMapping("/PrentLogin")
-  public ParentMaster PrentLoginApi(@RequestParam(name = "username", required = true) String username,
-      @RequestParam(name = "pass", required = true) String pass) {
-	  return parentDao.findByUserNameAndPassword(username, pass);
+  public ParentMaster PrentLoginApi(@RequestBody LoginDto login) {
+	  return parentDao.findByUserNameAndPassword(login.getUserName(), login.getPass());
   }
 }
