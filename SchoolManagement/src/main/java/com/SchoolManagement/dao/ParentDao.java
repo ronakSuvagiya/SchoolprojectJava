@@ -7,11 +7,12 @@ import com.SchoolManagement.enitiy.ParentMaster;
 import com.SchoolManagement.enitiy.SchoolMaster;
 import com.SchoolManagement.enitiy.Student;
 
-
 public interface ParentDao extends CrudRepository<ParentMaster, Integer> {
 
-  public ParentMaster findByStu(Student stu);
-  
-  public List<ParentMaster> findBySchool(SchoolMaster schoolMaster);
-  
+	public ParentMaster findByUserNameAndPassword(String username, String password);
+
+	public ParentMaster findByStu(Student stu);
+
+	public List<ParentMaster> findBySchool(SchoolMaster schoolMaster);
+
 }

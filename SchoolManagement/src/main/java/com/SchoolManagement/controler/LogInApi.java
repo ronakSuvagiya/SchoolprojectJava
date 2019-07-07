@@ -5,7 +5,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.SchoolManagement.dao.ParentDao;
 import com.SchoolManagement.dto.LoginDto;
+import com.SchoolManagement.enitiy.ParentMaster;
 import com.SchoolManagement.enitiy.TeacherMaster;
 import com.SchoolManagement.service.LoginApiService;
 
@@ -14,6 +17,9 @@ public class LogInApi {
 
   @Autowired
   LoginApiService loginService;
+  
+  @Autowired
+  ParentDao parentDao;
 
   @RequestMapping("/Teacherlogin")
   public TeacherMaster TeacherloginApi(@RequestBody LoginDto login) {
@@ -22,14 +28,14 @@ public class LogInApi {
   }
 
   @RequestMapping("/studentLogin")
-  public void studentLoginApi(@RequestParam(name = "username", required = true) String username,
+  public ParentMaster studentLoginApi(@RequestParam(name = "username", required = true) String username,
       @RequestParam(name = "pass", required = true) String pass) {
-
+	  return parentDao.findByUserNameAndPassword(username, pass);
   }
 
   @RequestMapping("/PrentLogin")
-  public void PrentLoginApi(@RequestParam(name = "username", required = true) String username,
+  public ParentMaster PrentLoginApi(@RequestParam(name = "username", required = true) String username,
       @RequestParam(name = "pass", required = true) String pass) {
-
+	  return parentDao.findByUserNameAndPassword(username, pass);
   }
 }
