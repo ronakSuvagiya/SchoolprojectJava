@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,6 +61,11 @@ public class AssignmentControlerApi {
 	}
 	
 	
+	@GetMapping("/getAssignmentByAssignApi")
+	public List<AssignmentMaster> getAsss(@RequestParam("std")Integer std,@RequestParam("div")Integer div,@RequestParam("date")Date date){
+		return aDao.findByStdAndDivIdAndAssign(stddao.findById(std).get(), divDao.findById(div).get(), date);
+	}
+	
 	public AssignmentMaster converdto(AssignmentDto assi) {
 		AssignmentMaster ass= new AssignmentMaster();
 		ass.setSubject(subdao.findById(assi.getSubject()).get());
@@ -69,7 +75,7 @@ public class AssignmentControlerApi {
 		ass.setDivId(divDao.findById(assi.getDiv()).get());
 		ass.setSchool(schoolDao.findById(assi.getSchool()).get());
 		ass.setStd(stddao.findById(assi.getStd()).get());
-		ass.setCreated_on(assi.getCreated_on());
+		ass.setAssign(assi.getCreated_on());
 		return ass;
 	}
 }

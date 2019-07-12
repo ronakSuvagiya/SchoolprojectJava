@@ -17,7 +17,7 @@ public class AssignmentMaster {
 
 	private Date date;
 	
-	private Date created_on;
+	private Date assign;
 
 	@ManyToOne(targetEntity = TeacherMaster.class)
 	@JoinColumn(name = "createBy")
@@ -41,12 +41,12 @@ public class AssignmentMaster {
 	@JoinColumn(name = "div_id")
 	private DivMaster divId;
 	
-	public Date getCreated_on() {
-		return created_on;
+	public Date getAssign() {
+		return assign;
 	}
 
-	public void setCreated_on(Date created_on) {
-		this.created_on = created_on;
+	public void setAssign(Date assign) {
+		this.assign = assign;
 	}
 
 	public SchoolMaster getSchool() {

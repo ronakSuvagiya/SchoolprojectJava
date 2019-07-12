@@ -15,4 +15,7 @@ public interface AssignmentDao extends CrudRepository<AssignmentMaster, Integer>
 	public AssignmentMaster findBySchoolAndStdAndDivIdAndDate(SchoolMaster sc, StdMaster std,DivMaster div,Date dDate);
 	
 	public List<AssignmentMaster> findByStdAndDivIdAndDate(StdMaster std,DivMaster div,Date Created_on);
+	
+	public List<AssignmentMaster> findByStdAndDivIdAndAssign(StdMaster std,DivMaster div,Date date);
+	
 }
