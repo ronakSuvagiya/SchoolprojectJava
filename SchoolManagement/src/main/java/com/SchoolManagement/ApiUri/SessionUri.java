@@ -6,5 +6,3 @@ public class SessionUri {
   public final static String techerId = "teacherId";
   public final static String TecherName = "teacherName";
 }
-
-//test abc ayfsv
