@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +23,8 @@ import com.SchoolManagement.dto.ImageCatDto;
 import com.SchoolManagement.dto.ImageDto;
 import com.SchoolManagement.enitiy.ImageCatMaster;
 import com.SchoolManagement.enitiy.ImageMaster;
+import com.SchoolManagement.service.ImageMasterService;
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -40,6 +43,9 @@ public class UploadImageApi {
 	
 	@Autowired
 	ImageDao imgMaster;
+	
+	@Autowired
+	ImageMasterService imageMasterService;
 	
 	public static String uploadDir = System.getProperty("user.dir") + "/image";
 
@@ -90,5 +96,11 @@ public class UploadImageApi {
 		img.setName(imageDto.getName());
 		img.setSchool(school.findById(imageDto.getSchool()).get());
 		return img;
+	}
+	
+	@GetMapping("findImageMasterBySchoolIdApi/{id}")
+	public List<ImageMaster> findImageMasterBySchoolId(@PathVariable("id")Integer id)
+	{
+		return imageMasterService.findImageMasterBySchoolId(id);
 	}
 }

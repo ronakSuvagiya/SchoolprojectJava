@@ -4,11 +4,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +25,7 @@ import com.SchoolManagement.dao.StdDio;
 import com.SchoolManagement.dao.SubjectDao;
 import com.SchoolManagement.enitiy.MetiralMaster;
 import com.SchoolManagement.enitiy.SchoolMaster;
+import com.SchoolManagement.service.MaterialService;
 
 @RestController
 public class MertialApi {
@@ -37,6 +41,9 @@ public class MertialApi {
 	
 	@Autowired
 	StdDio stdDao;
+	
+	@Autowired
+	MaterialService materialService;
 	
 	public static String uploadDir = System.getProperty("user.dir") + "/document";
 
@@ -65,5 +72,11 @@ public class MertialApi {
 			ResponesDto respone = result.setResponse(300, "Something is worng");
 			return new ResponseEntity<ResponesDto>(respone, HttpStatus.OK);
 		}
+	}
+	
+	@GetMapping("getMaterialBySchoolStdAndSubjectApi/{schoolId}/{stdId}/{subId}")
+	public List<MetiralMaster> findMetiralMasterBySchoolIdInAndStdIdInAndSubId(@PathVariable("schoolId")Integer schoolId,@PathVariable("stdId")Integer stdId,@PathVariable("subId")Integer subId)
+	{
+		return  materialService.findMetiralMasterBySchoolIdInAndStdIdInAndSubId(schoolId, stdId, subId); 
 	}
 }
