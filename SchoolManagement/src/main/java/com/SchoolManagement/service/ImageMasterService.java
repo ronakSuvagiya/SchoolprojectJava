@@ -6,5 +6,5 @@ import com.SchoolManagement.enitiy.ImageMaster;
 
 public interface ImageMasterService {
 
-	public List<ImageMaster> findImageMasterBySchoolId(Integer id);
+	public List<ImageMaster> findImageMasterBySchoolId(Integer schoolId);
 }

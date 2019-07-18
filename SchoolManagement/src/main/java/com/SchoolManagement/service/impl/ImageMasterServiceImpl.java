@@ -11,14 +11,16 @@ import com.SchoolManagement.service.ImageMasterService;
 
 @Service
 public class ImageMasterServiceImpl implements ImageMasterService {
+	
+	//test git
 
 	@Autowired
 	ImageDao imageDao;
 	
 	@Override
-	public List<ImageMaster> findImageMasterBySchoolId(Integer id) {
+	public List<ImageMaster> findImageMasterBySchoolId(Integer schoolId) {
 	
-		return imageDao.findImageMasterBySchoolId(id);
+		return imageDao.findImageMasterBySchoolId(schoolId);
 	}
 
 }

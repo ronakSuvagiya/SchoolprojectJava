@@ -16,9 +16,9 @@ public class MaterialServiceImpl implements MaterialService{
 	MertialDao materialDao;
 	
 	@Override
-	public List<MetiralMaster> findMetiralMasterBySchoolIdInAndStdIdInAndSubId(Integer schoolId, Integer stdId,Integer subId) {
+	public List<MetiralMaster> findMetiralMasterBySchoolIdInAndStdIdInAndSubId(Integer schoolId, Integer stdId,Integer subjectId) {
 		
-		return materialDao.findMetiralMasterBySchoolIdInAndStdIdInAndSubId(schoolId, stdId, subId);
+		return materialDao.findMetiralMasterBySchoolIdInAndStdIdInAndSubId(schoolId, stdId, subjectId);
 	}
 
 }
