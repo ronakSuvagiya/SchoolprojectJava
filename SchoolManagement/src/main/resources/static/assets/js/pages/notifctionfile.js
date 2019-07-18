@@ -1,4 +1,3 @@
-<script>
 			var interval;
 			var codetmpl = "<code>%codeobj%</code><br><code>%codestr%</code>";
 
@@ -88,4 +87,3 @@
 				$('#toastCode').html(codetmpl.replace('%codeobj%', codeobj).replace('%codestr%', codestr));
 				$.toaster(options);
 			}
-		</script>

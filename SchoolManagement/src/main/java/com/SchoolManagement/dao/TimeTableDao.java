@@ -6,4 +6,5 @@ import com.SchoolManagement.enitiy.TimeTableMaster;
 
 public interface TimeTableDao extends CrudRepository<TimeTableMaster, Integer> {
 
+	public TimeTableMaster findByDivId(Integer id);
 }

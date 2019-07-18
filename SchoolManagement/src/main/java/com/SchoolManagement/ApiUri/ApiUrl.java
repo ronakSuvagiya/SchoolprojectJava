@@ -28,10 +28,5 @@ public class ApiUrl {
 	
 	public final static String ADDATT = "http://quickedu.co.in/addAttendance";
 	
-	public final static String FINDIMAGESBYSCHOOL = "http://quickedu.co.in/findImageMasterBySchoolIdApi/";
-	
-	public static final String FINDMATERIALBYSUBSTDANDSCHOOL= "http://quickedu.co.in/getMaterialBySchoolStdAndSubjectApi/";
-	
-	
 
 }
