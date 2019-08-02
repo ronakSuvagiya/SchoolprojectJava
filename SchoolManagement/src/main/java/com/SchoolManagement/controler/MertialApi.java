@@ -6,6 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +26,6 @@ import com.SchoolManagement.dao.SchoolDao;
 import com.SchoolManagement.dao.StdDio;
 import com.SchoolManagement.dao.SubjectDao;
 import com.SchoolManagement.enitiy.MetiralMaster;
-import com.SchoolManagement.enitiy.SchoolMaster;
 import com.SchoolManagement.service.MaterialService;
 
 @RestController
@@ -45,12 +46,17 @@ public class MertialApi {
 	@Autowired
 	MaterialService materialService;
 	
-	public static String uploadDir = System.getProperty("user.dir") + "/document";
+	@Autowired
+    ServletContext context;
+	
+
+	public static String uploadDir = "/WEB-INF/classes/static/document/";
 
 	@RequestMapping(value = "/addmatirealApi",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponesDto> addmatrial(@RequestParam("file") MultipartFile image1, Integer sub, Integer std,Integer schoolId){
 		MetiralMaster m1 = new MetiralMaster();
-		Path fileNameAndPath = Paths.get(uploadDir, image1.getOriginalFilename());
+		String absoluteFilePath = context.getRealPath(uploadDir);
+		Path fileNameAndPath = Paths.get(absoluteFilePath, image1.getOriginalFilename());
 	    try {
 	      Files.write(fileNameAndPath, image1.getBytes());
 	    } catch (IOException e) {

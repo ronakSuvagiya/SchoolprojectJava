@@ -2,6 +2,10 @@ package com.SchoolManagement.controler;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Set;
+
+import javax.servlet.ServletContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -41,7 +45,11 @@ public class UploadImageApi {
 	@Autowired
 	ImageDao imgMaster;
 	
-	public static String uploadDir = System.getProperty("user.dir") + "/image";
+	@Autowired
+    ServletContext context;
+	
+	public static String uploadDir = "/WEB-INF/classes/static/image/";
+									  
 
 	@PostMapping("/addCatApi")
 	public ResponseEntity<ResponesDto> addcat(@RequestBody ImageCatDto imageDto){
@@ -59,9 +67,12 @@ public class UploadImageApi {
 	
 	@PostMapping(value = "/addImageApi",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponesDto> addImage(@RequestParam("file") MultipartFile image1, Integer cat, Integer schoolId){
+	
+		String absoluteFilePath = context.getRealPath(uploadDir);
 		ImageMaster image = new ImageMaster();
 		//String extension = FilenameUtils.getExtension(imageDto.getImage_name().getOriginalFilename());
-	    Path fileNameAndPath = Paths.get(uploadDir, image1.getOriginalFilename());
+		System.out.println(absoluteFilePath);
+	    Path fileNameAndPath = Paths.get(absoluteFilePath, image1.getOriginalFilename());
 	    try {
 	      Files.write(fileNameAndPath, image1.getBytes());
 	    } catch (IOException e) {

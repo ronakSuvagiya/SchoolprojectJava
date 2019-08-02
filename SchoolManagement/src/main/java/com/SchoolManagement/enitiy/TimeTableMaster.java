@@ -1,5 +1,7 @@
 package com.SchoolManagement.enitiy;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -27,10 +29,44 @@ public class TimeTableMaster {
   @ManyToOne(targetEntity = SchoolMaster.class)
   @JoinColumn(name = "school_id")
   private SchoolMaster school;
+  
+  @ManyToOne(targetEntity = TeacherMaster.class)
+  @JoinColumn(name = "teacher_id")
+  private TeacherMaster teacher;
 
   private Integer type;
 
-  public DivMaster getDiv() {
+  private Date examDate;
+  
+  private String Title;
+
+  
+
+public Date getExamDate() {
+	return examDate;
+}
+
+public void setExamDate(Date examDate) {
+	this.examDate = examDate;
+}
+
+public String getTitle() {
+	return Title;
+}
+
+public void setTitle(String title) {
+	Title = title;
+}
+
+public TeacherMaster getTeacher() {
+	return teacher;
+}
+
+public void setTeacher(TeacherMaster teacher) {
+	this.teacher = teacher;
+}
+
+public DivMaster getDiv() {
     return div;
   }
 

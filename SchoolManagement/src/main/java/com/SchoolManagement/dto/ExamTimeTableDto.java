@@ -1,7 +1,13 @@
 package com.SchoolManagement.dto;
 
+import java.sql.Date;
+
 public class ExamTimeTableDto {
 
+	public String title;
+	
+	public Date examStartDate;
+	
   public String date;
 
   public String S_time;
@@ -14,7 +20,24 @@ public class ExamTimeTableDto {
 
   public Integer school_id;
 
-  public String getDate() {
+  
+  public String getTitle() {
+	return title;
+}
+
+public void setTitle(String title) {
+	this.title = title;
+}
+
+public Date getExamStartDate() {
+	return examStartDate;
+}
+
+public void setExamStartDate(Date examStartDate) {
+	this.examStartDate = examStartDate;
+}
+
+public String getDate() {
     return date;
   }
 
