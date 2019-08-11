@@ -32,10 +32,11 @@ public class RestSession {
 				& !url.equals("/findByStudentid") & !url.equals("/findByStdAndDiv") & !url.equals("/addTeacher")
 				& !url.equals("/updateTeacher") & !url.equals("/deleteTeacher") & !url.equals("/selectTeacher")
 				& !url.equals("/findByTeacherid") & !url.equals("/setTimeTable") & !url.equals("/setExamTimeTable")  & !url.equals("/loginData") & !url.equals("/finstdBySchoolId")
-				& !url.equals("/findByStdAndDivAndSchool") & !url.toLowerCase().contains("api")) {
+				& !url.equals("/findByStdAndDivAndSchool") & !url.toLowerCase().contains("api") &!url.equals("/addTokenApi")) {
 			if (request.getSession() != null && request.getSession().getAttribute(SessionUri.SchoolId) != null) {
 				System.out.println(request.getSession().getAttribute(SessionUri.SchoolId));
 			} else {
+				System.out.println("notlogin");
 				try {
 					res.sendRedirect("/login");
 				} catch (IOException e) {

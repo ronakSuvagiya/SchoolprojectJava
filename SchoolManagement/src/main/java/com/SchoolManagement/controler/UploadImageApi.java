@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -65,6 +66,10 @@ public class UploadImageApi {
 		return imageCat.findByschool(this.school.findById(school).get());
 	}
 	
+	@GetMapping("/getImageApi")
+	public List<ImageMaster> getImage(@RequestParam("school_id") Integer id){
+		return imgMaster.findImageMasterBySchoolId(id);
+	}
 	@PostMapping(value = "/addImageApi",produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<ResponesDto> addImage(@RequestParam("file") MultipartFile image1, Integer cat, Integer schoolId){
 	

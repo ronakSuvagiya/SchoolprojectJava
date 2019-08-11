@@ -24,7 +24,6 @@ import com.SchoolManagement.dto.TeacherTimeTableDto;
 import com.SchoolManagement.dto.TimeTableDto;
 import com.SchoolManagement.enitiy.TimeTableMaster;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.pdf.PdfStructTreeController.returnType;
 
 @RestController
 public class TimeTableControllerApi {
@@ -41,9 +40,9 @@ public class TimeTableControllerApi {
   @Autowired
   ServletContext context;
   	
- // public static String uploadDir = "/WEB-INF/classes/static/timeTable/";
+  public static String uploadDir = "/WEB-INF/classes/static/timeTable/";
   
-  public static String uploadDir = "/timeTable/";
+ // public static String uploadDir = "/timeTable/";
   
   @RequestMapping("/setTimeTable")
   public ResponseEntity<ResponesDto> setTimeTable(@RequestBody TimeTableDto timeTableDto) {
